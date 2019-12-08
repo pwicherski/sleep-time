@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'strings.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 void main() => runApp(MyApp());
 
@@ -115,6 +116,21 @@ class _MyHomePageState extends State<MyHomePage> {
                   ],);
     }
 
+    
+    showToast() {
+
+      Fluttertoast.showToast(
+        msg: "Cycles refreshed!",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIos: 1,
+        backgroundColor: Colors.blue,
+        textColor: Colors.white,
+        fontSize: 15.0
+    );
+
+    }
+
     return Scaffold(
       appBar: AppBar(
 
@@ -147,7 +163,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ]),),),
 
           RaisedButton(
-          onPressed: () {cyclesMeasure();
+          onPressed: () {cyclesMeasure(); showToast();
           setState((){
                   _c.text = Strings.emptyValue;
                   _opacity = _opacity == 0.0 ? 1.0 : 1.0; 
